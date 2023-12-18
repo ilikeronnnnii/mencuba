@@ -10,3 +10,4 @@ adam fuck wong qin tong
 adam hensem iler babi
 
 arifff tambhahhh lagiii
+lmao
