@@ -7,7 +7,7 @@ arif n
 meow meow n
 adam 
 
-adam hensem iler babi
+adam hensem 
 
 arifff tambhahhh lagiii
 lmao
