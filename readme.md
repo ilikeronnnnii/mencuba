@@ -3,9 +3,9 @@ askjdfghasdjhkgfs
 wtf
 ,hjv
 
-arif ninggagga
-meow meow nigga
-adam fuck wong qin tong
+arif n
+meow meow n
+adam 
 
 adam hensem iler babi
 
