@@ -5,7 +5,7 @@ wtf
 
 arif ninggagga
 meow meow nigga
-adam fuck wong qin tong
+adam 
 
 adam hensem iler babi
 
