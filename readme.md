@@ -3,8 +3,8 @@ askjdfghasdjhkgfs
 wtf
 ,hjv
 
-arif ninggagga
-meow meow nigga
+arif n
+meow meow n
 adam 
 
 adam hensem iler babi
