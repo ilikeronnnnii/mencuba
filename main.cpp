@@ -6,6 +6,19 @@
 
 using namespace std;
 
+class User;
+class Airline;
+class Reservation;
+
+int partitionUsers(vector<User> &users, int bottom, int top, int choice);
+void quickSortUsers(vector<User> &users, int bottom, int top, int choice);
+
+int partitionAirline(vector<Airline> &airlines, int bottom, int top, int choice);
+void quickSortAirline(vector<Airline> &airlines, int bottom, int top, int choice);
+
+int partitionReservation(vector<Reservation> &reservations, int bottom, int top, int choice);
+void quickSortReservation(vector<Reservation> &reservations, int bottom, int top, int choice);
+
 class User
 {
 private:
@@ -18,21 +31,76 @@ public:
     User(string Name, string IC, string Phone, string Email)
         : Name(Name), IC(IC), Phone(Phone), Email(Email) {}
 
-    void display(int x) const
+    string getName() const
+    {
+        return Name;
+    }
+    string getIC() const
+    {
+        return IC;
+    }
+    string getPhone() const
+    {
+        return Phone;
+    }
+    string getEmail() const
+    {
+        return Email;
+    }
+
+    void display(int x, vector<User> &users) const
     {
 
-        if (x == 1)
-        {
-        }
-        else if (x == 2)
-        {
-                }
+        quickSortUsers(users, 0, users.size() - 1, x);
         cout << "Name: " << Name << endl;
         cout << "Identification Number: " << IC << endl;
         cout << "Phone Number: " << Phone << endl;
         cout << " Email: " << Email << endl;
     }
 };
+
+int partitionUsers(vector<User> &users, int bottom, int top, int choice)
+{
+    User pivot = users[top];
+    int pIndex = bottom;
+
+    for (int i = bottom; i <= top - 1; i++)
+    {
+        if (choice == 1 && users[i].getName() < pivot.getName())
+        {
+            swap(users[i], users[pIndex]);
+            pIndex++;
+        }
+        else if (choice == 2 && users[i].getIC() < pivot.getIC())
+        {
+            swap(users[i], users[pIndex]);
+            pIndex++;
+        }
+        else if (choice == 3 && users[i].getPhone() < pivot.getPhone())
+        {
+            swap(users[i], users[pIndex]);
+            pIndex++;
+        }
+        else if (choice == 4 && users[i].getEmail() < pivot.getEmail())
+        {
+            swap(users[i], users[pIndex]);
+            pIndex++;
+        }
+    }
+
+    swap(users[top], users[pIndex]);
+    return pIndex;
+}
+
+void quickSortUsers(vector<User> &users, int bottom, int top, int choice)
+{
+    if (bottom < top)
+    {
+        int pivot = partitionUsers(users, bottom, top, choice);
+        quickSortUsers(users, bottom, pivot - 1, choice);
+        quickSortUsers(users, pivot + 1, top, choice);
+    }
+}
 
 class Airline
 {
@@ -45,13 +113,66 @@ public:
     Airline(string AirplaneID, string Capacity, string Company)
         : AirplaneID(AirplaneID), Capacity(Capacity), Company(Company) {}
 
-    void display() const
+    string getAirplaneID()
     {
+        return AirplaneID;
+    }
+    string getCapacity()
+    {
+        return Capacity;
+    }
+
+    string getCompany()
+    {
+        return Company;
+    }
+
+    void display(int x, vector<Airline> &airlines) const
+    {
+        quickSortAirline(airlines, 0, airlines.size() - 1, x);
         cout << "AirplaneID: " << AirplaneID << endl;
         cout << "Plane Max Capacity: " << Capacity << endl;
         cout << "Plane Brand: " << Company << endl;
     }
 };
+
+int partitionAirline(vector<Airline> &airlines, int bottom, int top, int choice)
+{
+    Airline pivot = airlines[top];
+    int pIndex = bottom;
+
+    for (int i = bottom; i <= top - 1; i++)
+    {
+        if (choice == 1 && airlines[i].getAirplaneID() < pivot.getAirplaneID())
+        {
+            swap(airlines[i], airlines[pIndex]);
+            pIndex++;
+        }
+        else if (choice == 2 && airlines[i].getCapacity() < pivot.getCapacity())
+        {
+            swap(airlines[i], airlines[pIndex]);
+            pIndex++;
+        }
+        else if (choice == 3 && airlines[i].getCompany() < pivot.getCompany())
+        {
+            swap(airlines[i], airlines[pIndex]);
+            pIndex++;
+        }
+    }
+
+    swap(airlines[top], airlines[pIndex]);
+    return pIndex;
+}
+
+void quickSortAirline(vector<Airline> &airlines, int bottom, int top, int choice)
+{
+    if (bottom < top)
+    {
+        int pivot = partitionAirline(airlines, bottom, top, choice);
+        quickSortAirline(airlines, bottom, pivot - 1, choice);
+        quickSortAirline(airlines, pivot + 1, top, choice);
+    }
+}
 
 class Reservation
 {
@@ -67,16 +188,94 @@ public:
     Reservation(string ReservationID, string DepartureTime, string ArrivalTime, string Date, string Location, string Class)
         : ReservationID(ReservationID), DepartureTime(DepartureTime), ArrivalTime(ArrivalTime), Date(Date), Location(Location), Class(Class) {}
 
-    void display() const
+    string getReservationID()
     {
+        return ReservationID;
+    }
+    string getDepartureTime()
+    {
+        return DepartureTime;
+    }
+    string getArrivalTime()
+    {
+        return ArrivalTime;
+    }
+    string getDate()
+    {
+        return Date;
+    }
+    string getLocation()
+    {
+        return Location;
+    }
+    string getClass()
+    {
+        return Class;
+    }
+    void display(int x, vector<Reservation> &reservations) const
+    {
+        quickSortReservation(reservations, 0, reservations.size() - 1, x);
         cout << "ReservationID: " << ReservationID << endl;
-        cout << "estimated Departure Time: " << DepartureTime << endl;
+        cout << "Estimated Departure Time: " << DepartureTime << endl;
         cout << "Estimated Arrival Time: " << ArrivalTime << endl;
         cout << "Reservation Date: " << Date << endl;
         cout << "Arrival Destination: " << Location << endl;
         cout << "Class: " << Class << endl;
     }
 };
+
+int partitionReservation(vector<Reservation> &reservations, int bottom, int top, int choice)
+{
+    Reservation pivot = reservations[top];
+    int pIndex = bottom;
+
+    for (int i = bottom; i <= top - 1; i++)
+    {
+        if (choice == 3 && reservations[i].getArrivalTime() < pivot.getArrivalTime())
+        {
+            swap(reservations[i], reservations[pIndex]);
+            pIndex++;
+        }
+        else if (choice == 6 && reservations[i].getClass() < pivot.getClass())
+        {
+            swap(reservations[i], reservations[pIndex]);
+            pIndex++;
+        }
+        else if (choice == 4 && reservations[i].getDate() < pivot.getDate())
+        {
+            swap(reservations[i], reservations[pIndex]);
+            pIndex++;
+        }
+        else if (choice == 2 && reservations[i].getDepartureTime() < pivot.getDepartureTime())
+        {
+            swap(reservations[i], reservations[pIndex]);
+            pIndex++;
+        }
+        else if (choice == 5 && reservations[i].getLocation() < pivot.getLocation())
+        {
+            swap(reservations[i], reservations[pIndex]);
+            pIndex++;
+        }
+        else if (choice == 1 && reservations[i].getReservationID() < pivot.getReservationID())
+        {
+            swap(reservations[i], reservations[pIndex]);
+            pIndex++;
+        }
+    }
+
+    swap(reservations[top], reservations[pIndex]);
+    return pIndex;
+}
+
+void quickSortReservation(vector<Reservation> &reservations, int bottom, int top, int choice)
+{
+    if (bottom < top)
+    {
+        int pivot = partitionReservation(reservations, bottom, top, choice);
+        quickSortReservation(reservations, bottom, pivot - 1, choice);
+        quickSortReservation(reservations, pivot + 1, top, choice);
+    }
+}
 
 class Init
 {
@@ -305,15 +504,35 @@ int main()
 
                         for (const auto &user : users)
                         {
-                            user.display();
+                            user.display(choice, users);
                             cout << "--------------------" << endl;
                         }
                     }
                     else if (choice == 2)
                     {
-                        init.displaySeachingUser();
+                        init.displaySortingAirline();
                         cin >> choice;
+
                         cout << endl;
+
+                        for (const auto &airline : airlines)
+                        {
+                            airline.display(choice, airlines);
+                            cout << "--------------------" << endl;
+                        }
+                    }
+                    else if (choice == 3)
+                    {
+                        init.displaySortingReservation();
+                        cin >> choice;
+
+                        cout << endl;
+
+                        for (const auto &reservation : reservations)
+                        {
+                            reservation.display(choice, reservations);
+                            cout << "--------------------" << endl;
+                        }
                     }
                     else
                         cout << "Invalid Choice" << endl;
