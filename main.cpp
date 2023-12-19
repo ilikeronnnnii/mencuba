@@ -468,7 +468,7 @@ void LoadFiles(vector<User> &users, vector<Airline> &airline, vector<Reservation
     reservationFile.close();
 };
 
-int binarySearchByName(const vector<User> &users, const string &name)
+int binarySearchByName(const std::vector<User> &users, const std::string &name)
 {
     int low = 0;
     int high = users.size() - 1;
@@ -585,8 +585,9 @@ int main()
                                 cout << "Insert the username: ";
 
                                 getline(cin, username);
+                                quickSortUsers(users, 0, users.size() - 1, 1);
                                 found = binarySearchByName(users, username);
-
+                                cout << found;
                                 users[found].displayBodo();
                             }
                         }
