@@ -494,6 +494,84 @@ int binarySearchByName(const std::vector<User> &users, const std::string &name)
     return -1; // User not found
 }
 
+int binarySearchByIC(const std::vector<User> &users, const std::string &IC)
+{
+    int low = 0;
+    int high = users.size() - 1;
+
+    while (low <= high)
+    {
+        int mid = low + (high - low) / 2;
+
+        if (users[mid].getIC() == IC)
+        {
+            return mid; // User found at index mid
+        }
+        else if (users[mid].getIC() < IC)
+        {
+            low = mid + 1;
+        }
+        else
+        {
+            high = mid - 1;
+        }
+    }
+
+    return -1; // User not found
+}
+
+int binarySearchByPhone(const std::vector<User> &users, const std::string &Phone)
+{
+    int low = 0;
+    int high = users.size() - 1;
+
+    while (low <= high)
+    {
+        int mid = low + (high - low) / 2;
+
+        if (users[mid].getPhone() == Phone)
+        {
+            return mid; // User found at index mid
+        }
+        else if (users[mid].getPhone() < Phone)
+        {
+            low = mid + 1;
+        }
+        else
+        {
+            high = mid - 1;
+        }
+    }
+
+    return -1; // User not found
+}
+
+int binarySearchByEmail(const std::vector<User> &users, const std::string &Email)
+{
+    int low = 0;
+    int high = users.size() - 1;
+
+    while (low <= high)
+    {
+        int mid = low + (high - low) / 2;
+
+        if (users[mid].getEmail() == Email)
+        {
+            return mid; // User found at index mid
+        }
+        else if (users[mid].getEmail() < Email)
+        {
+            low = mid + 1;
+        }
+        else
+        {
+            high = mid - 1;
+        }
+    }
+
+    return -1; // User not found
+}
+
 int main()
 {
 
@@ -587,6 +665,45 @@ int main()
                                 getline(cin, username);
                                 quickSortUsers(users, 0, users.size() - 1, 1);
                                 found = binarySearchByName(users, username);
+                                cout << found;
+                                users[found].displayBodo();
+                            }
+
+                            if (choice == 2)
+                            {
+                                string IC;
+                                int found = 0;
+                                cout << "Insert the IC: ";
+
+                                getline(cin, IC);
+                                quickSortUsers(users, 0, users.size() - 1, 1);
+                                found = binarySearchByIC(users, IC);
+                                cout << found;
+                                users[found].displayBodo();
+                            }
+
+                            if (choice == 3)
+                            {
+                                string Phone;
+                                int found = 0;
+                                cout << "Insert the Phone: ";
+
+                                getline(cin, Phone);
+                                quickSortUsers(users, 0, users.size() - 1, 1);
+                                found = binarySearchByPhone(users, Phone);
+                                cout << found;
+                                users[found].displayBodo();
+                            }
+
+                            if (choice == 4)
+                            {
+                                string Email;
+                                int found = 0;
+                                cout << "Insert the Email: ";
+
+                                getline(cin, Email);
+                                quickSortUsers(users, 0, users.size() - 1, 1);
+                                found = binarySearchByEmail(users, Email);
                                 cout << found;
                                 users[found].displayBodo();
                             }
