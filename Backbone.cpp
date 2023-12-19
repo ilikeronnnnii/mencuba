@@ -101,6 +101,27 @@ void displaySortingUser()
     cout << "Option" << endl;
 }
 
+void displaySortingAirline()
+{
+    cout << "<<< Sorting Airline >>>" << endl;
+    cout << "[1] By AirplaneID" << endl;
+    cout << "[2] By Capacity" << endl;
+    cout << "[3] By Company" << endl;
+    cout << "[4] By Class" << endl;
+    cout << "[5] By Food/Beverage" << endl;
+    cout << "Option" << endl;
+}
+
+void displaySortingReservation()
+{
+    cout << "<<< Sorting Reservation >>>" << endl;
+    cout << "[1] By ReservationID" << endl;
+    cout << "[2] By DepartureTime" << endl;
+    cout << "[3] By ArrivalTime" << endl;
+    cout << "[4] By Date" << endl;
+    cout << "[5] By Location" << endl;
+    cout << "Option" << endl;
+}
 // continue tmrw, forgot to sleep
 int main()
 {
