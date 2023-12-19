@@ -20,6 +20,7 @@ int partitionReservation(vector<Reservation> &reservations, int bottom, int top,
 void quickSortReservation(vector<Reservation> &reservations, int bottom, int top, int choice);
 
 int binarySearchByName(const vector<User> &users, const string &name);
+int binarySearchByAirplaneID(const vector<Airline> &airlines, const string &airplanes);
 
 class User
 {
@@ -560,6 +561,32 @@ int binarySearchByEmail(const std::vector<User> &users, const std::string &Email
             return mid; // User found at index mid
         }
         else if (users[mid].getEmail() < Email)
+        {
+            low = mid + 1;
+        }
+        else
+        {
+            high = mid - 1;
+        }
+    }
+
+    return -1; // User not found
+}
+
+int binarySearchByAirplaneID(const std::vector<Airline> &airlines, const std::string &AirplaneID)
+{
+    int low = 0;
+    int high = airlines.size() - 1;
+
+    while (low <= high)
+    {
+        int mid = low + (high - low) / 2;
+
+        if (airlines[mid].getAirplaneID() == AirplaneID)
+        {
+            return mid; // User found at index mid
+        }
+        else if (airlines[mid].getAirplaneID() < AirplaneID)
         {
             low = mid + 1;
         }
