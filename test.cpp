@@ -1,120 +1,284 @@
 #include <iostream>
+#include <string>
+#include <vector>
+#include <fstream>
+#include <sstream>
+
 using namespace std;
 
-void displayMenu()
+class User
 {
-    system("cls"); // to clear the mess
-    cout << endl;
-    cout << "                                   |" << endl;
-    cout << "                                   |" << endl;
-    cout << "                                   |" << endl;
-    cout << "                                 .-'-." << endl;
-    cout << "                                ' ___ '" << endl;
-    cout << "                      ---------'  .-.  '---------" << endl;
-    cout << "      _________________________'  '-'  '_________________________" << endl;
-    cout << "       ''''''-|---|--/    \\==][^',_m_,'^][==/    \\--|---|-'''''' " << endl;
-    cout << "                     \\    /  ||/   H   \\||  \\    /" << endl;
-    cout << "                      '--'   OO   O|O   OO   '--'" << endl;
+private:
+    string Name;
+    string IC;
+    string Phone;
+    string Email;
 
-    cout << "Airline Reservation System" << endl;
-    cout << "[0] Make a reservation" << endl;
-    cout << "[1] Reservation Dashboard" << endl;
-    cout << "[4] Exit" << endl;
-    cout << "Option: ";
-}
+public:
+    User(string Name, string IC, string Phone, string Email)
+        : Name(Name), IC(IC), Phone(Phone), Email(Email) {}
 
-void displayReservationDashboard()
+    void display() const
+    {
+
+        cout << "Name: " << Name << endl;
+        cout << "Identification Number: " << IC << endl;
+        cout << "Phone Number: " << Phone << endl;
+        cout << " Email: " << Email << endl;
+    }
+};
+
+class Airline
 {
-    cout << "Reservation Dashbord" << endl;
-    cout << "[1] Display User" << endl;
-    cout << "[2] Display Airline" << endl;
-    cout << "[3] Display Reservation" << endl;
-    cout << "[4] Exit" << endl;
-}
+private:
+    string AirplaneID;
+    string Capacity;
+    string Company;
 
-void displaySelection()
-{
-    cout << "Choose Option" << endl;
-    cout << "[1] Sort Data" << endl;
-    cout << "[2] Search Data" << endl;
-    cout << "Option: ";
-}
+public:
+    Airline(string AirplaneID, string Capacity, string Company)
+        : AirplaneID(AirplaneID), Capacity(Capacity), Company(Company) {}
 
-void displaySortingUser()
-{
-    cout << "Sorting User" << endl;
-    cout << "[1] By Name" << endl;
-    cout << "[2] By IC" << endl;
-    cout << "[3] By Phone" << endl;
-    cout << "[4] By Email" << endl;
-    cout << "Option: ";
-}
+    void display() const
+    {
+        cout << "AirplaneID: " << AirplaneID << endl;
+        cout << "Plane Max Capacity: " << Capacity << endl;
+        cout << "Plane Brand: " << Company << endl;
+    }
+};
 
-void displaySortingAirline()
+class Reservation
 {
-    cout << "Sorting Airline" << endl;
-    cout << "[1] By AirplaneID" << endl;
-    cout << "[2] By Capacity" << endl;
-    cout << "[3] By Company" << endl;
-    cout << "[4] By Class" << endl;
-    cout << "[5] By Food/Beverage" << endl;
-    cout << "Option: ";
-}
+private:
+    string ReservationID;
+    string DepartureTime;
+    string ArrivalTime;
+    string Date;
+    string Location;
+    string Class;
 
-void displaySortingReservation()
-{
-    cout << "Sorting Reservation" << endl;
-    cout << "[1] By ReservationID" << endl;
-    cout << "[2] By DepartureTime" << endl;
-    cout << "[3] By ArrivalTime" << endl;
-    cout << "[4] By Date" << endl;
-    cout << "[5] By Location" << endl;
-    cout << "Option: ";
-}
+public:
+    Reservation(string ReservationID, string DepartureTime, string ArrivalTime, string Date, string Location, string Class)
+        : ReservationID(ReservationID), DepartureTime(DepartureTime), ArrivalTime(ArrivalTime), Date(Date), Location(Location), Class(Class) {}
 
-void displaySeachingUser()
-{
-    cout << "Searching User" << endl;
-    cout << "[1] By Name" << endl;
-    cout << "[2] By IC" << endl;
-    cout << "[3] By Phone" << endl;
-    cout << "[4] By Email" << endl;
-    cout << "Option: ";
-}
+    void display() const
+    {
+        cout << "ReservationID: " << ReservationID << endl;
+        cout << "Estimated Departure Time: " << DepartureTime << endl;
+        cout << "Estimated Arrival Time: " << ArrivalTime << endl;
+        cout << "Reservation Date: " << Date << endl;
+        cout << "Arrival Destination: " << Location << endl;
+        cout << "Class: " << Class << endl;
+    }
 
-void displaySeachingAirline()
-{
-    cout << "Searching Airline" << endl;
-    cout << "[1] By AirplaneID" << endl;
-    cout << "[2] By Capacity" << endl;
-    cout << "[3] By Company" << endl;
-    cout << "[4] By Class" << endl;
-    cout << "[5] By Food/Beverage" << endl;
-    cout << "Option: ";
-}
+    void displayOptions() const
+    {
+        cout << "Estimated Departure Time: " << DepartureTime << endl;
+        cout << "Estimated Arrival Time: " << ArrivalTime << endl;
+        cout << "Reservation Date: " << Date << endl;
+        cout << "Arrival Destination: " << Location << endl;
+        cout << "Class: " << Class << endl;
+    }
 
-void displaySeachingReservation()
+    void displayLocation() const
+    {
+        cout << Location << " ";
+    }
+};
+
+class Init
 {
-    cout << "Searching Reservation" << endl;
-    cout << "[1] By ReservationID" << endl;
-    cout << "[2] By DepartureTime" << endl;
-    cout << "[3] By ArrivalTime" << endl;
-    cout << "[4] By Date" << endl;
-    cout << "[5] By Location" << endl;
-    cout << "Option: ";
-}
+public:
+    void
+    displayMenu()
+    {
+        // system("cls"); // to clear the mess
+        cout << endl;
+        cout << "                                   |" << endl;
+        cout << "                                   |" << endl;
+        cout << "                                   |" << endl;
+        cout << "                                 .-'-." << endl;
+        cout << "                                ' ___ '" << endl;
+        cout << "                      ---------'  .-.  '---------" << endl;
+        cout << "      _________________________'  '-'  '_________________________" << endl;
+        cout << "       ''''''-|---|--/    \\==][^',_m_,'^][==/    \\--|---|-'''''' " << endl;
+        cout << "                     \\    /  ||/   H   \\||  \\    /" << endl;
+        cout << "                      '--'   OO   O|O   OO   '--'" << endl;
+
+        cout << "Airline Reservation System" << endl;
+        cout << "[0] Make a reservation" << endl;
+        cout << "[1] Reservation Dashboard" << endl;
+        cout << "[2] Exit" << endl;
+        cout << "Option: ";
+    }
+
+    void displayReservationDashboard()
+    {
+        cout << "Reservation Dashboard" << endl;
+        cout << "[1] Display User" << endl;
+        cout << "[2] Display Airline" << endl;
+        cout << "[3] Display Reservation" << endl;
+        cout << "[4] Exit" << endl;
+    }
+
+    void displaySelection()
+    {
+        cout << "Choose Option" << endl;
+        cout << "[1] Sort Data" << endl;
+        cout << "[2] Search Data" << endl;
+        cout << "Option: ";
+    }
+
+    void displaySortingUser()
+    {
+        cout << "Sorting User" << endl;
+        cout << "[1] By Name" << endl;
+        cout << "[2] By IC" << endl;
+        cout << "[3] By Phone" << endl;
+        cout << "[4] By Email" << endl;
+        cout << "Option: ";
+    }
+
+    void displaySortingAirline()
+    {
+        cout << "Sorting Airline" << endl;
+        cout << "[1] By AirplaneID" << endl;
+        cout << "[2] By Capacity" << endl;
+        cout << "[3] By Company" << endl;
+        cout << "[4] By Class" << endl;
+        cout << "[5] By Food/Beverage" << endl;
+        cout << "Option: ";
+    }
+
+    void displaySortingReservation()
+    {
+        cout << "Sorting Reservation" << endl;
+        cout << "[1] By ReservationID" << endl;
+        cout << "[2] By DepartureTime" << endl;
+        cout << "[3] By ArrivalTime" << endl;
+        cout << "[4] By Date" << endl;
+        cout << "[5] By Location" << endl;
+        cout << "Option: ";
+    }
+
+    void displaySeachingUser()
+    {
+        cout << "Searching User" << endl;
+        cout << "[1] By Name" << endl;
+        cout << "[2] By IC" << endl;
+        cout << "[3] By Phone" << endl;
+        cout << "[4] By Email" << endl;
+        cout << "Option: ";
+    }
+
+    void displaySeachingAirline()
+    {
+        cout << "Searching Airline" << endl;
+        cout << "[1] By AirplaneID" << endl;
+        cout << "[2] By Capacity" << endl;
+        cout << "[3] By Company" << endl;
+        cout << "[4] By Class" << endl;
+        cout << "[5] By Food/Beverage" << endl;
+        cout << "Option: ";
+    }
+
+    void displaySeachingReservation()
+    {
+        cout << "Searching Reservation" << endl;
+        cout << "[1] By ReservationID" << endl;
+        cout << "[2] By DepartureTime" << endl;
+        cout << "[3] By ArrivalTime" << endl;
+        cout << "[4] By Date" << endl;
+        cout << "[5] By Location" << endl;
+        cout << "Option: ";
+    }
+
+    void makeReservation()
+    {
+        system("cls");
+        cout << "Welcome to Capybara International Airport (CiA)" << endl;
+        cout << "Where to travel?:  " << endl
+             << endl;
+    }
+};
+
+void LoadFiles(vector<User> &users, vector<Airline> &airline, vector<Reservation> &reservation)
+{
+    ifstream userFile("data/user.csv");
+    string lineUser;
+
+    getline(userFile, lineUser); // skip the headings
+
+    while (getline(userFile, lineUser))
+    {
+        string name, ic, phone, email;
+        stringstream ss(lineUser); // get the whole line
+        getline(ss, name, ',');
+        getline(ss, ic, ',');
+        getline(ss, phone, ',');
+        getline(ss, email, ',');
+
+        users.push_back(User(name, ic, phone, email));
+    }
+
+    userFile.close();
+
+    ifstream airlineFile("data/airline.csv");
+    string lineAirline;
+
+    getline(airlineFile, lineAirline); // skip the headings
+
+    while (getline(airlineFile, lineAirline))
+    {
+        string airplaneId, capacity, company;
+        stringstream ss(lineAirline); // get the whole line
+        getline(ss, airplaneId, ',');
+        getline(ss, capacity, ',');
+        getline(ss, company, ',');
+
+        airline.push_back(Airline(airplaneId, capacity, company));
+    }
+    airlineFile.close();
+
+    ifstream reservationFile("data/reservation.csv");
+    string lineReservation;
+
+    getline(reservationFile, lineReservation); // skip the headings
+
+    while (getline(reservationFile, lineReservation))
+    {
+        string reservationId, departureTime, arrivalTime, date, location, Class;
+        stringstream ss(lineReservation); // get the whole line
+        getline(ss, reservationId, ',');
+        getline(ss, departureTime, ',');
+        getline(ss, arrivalTime, ',');
+        getline(ss, date, ',');
+        getline(ss, location, ',');
+        getline(ss, Class, ',');
+
+        reservation.push_back(Reservation(reservationId, departureTime, arrivalTime, date, location, Class));
+    }
+    reservationFile.close();
+};
 
 int main()
 {
 
+    vector<User> users;
+    vector<Airline> airlines;
+    vector<Reservation> reservations;
+
+    LoadFiles(users, airlines, reservations);
+
+    Init init;
     int option;
     while (true)
     {
-        displayMenu();
+        init.displayMenu();
         cin >> option;
         cout << endl;
 
-        if (option == 4)
+        if (option == 2)
         {
             break;
         }
@@ -123,13 +287,26 @@ int main()
         {
         case 0:
         {
-            cout << "hello";
+            init.makeReservation();
+            int i = 1;
+            for (const auto &reservation : reservations)
+            {
+                cout << "[" << i << "] ";
+                reservation.displayLocation();
+
+                cout << endl
+                     << "--------------------------" << endl;
+                i++;
+            }
+
+            cout << "Select: ";
+            cin >> option;
         }
         break;
         case 1:
         {
             int choice;
-            displayReservationDashboard();
+            init.displayReservationDashboard();
 
             cout << endl
                  << "Which operation would you like to choose?" << endl;
@@ -141,19 +318,83 @@ int main()
             {
             case 1:
             {
-                while (choice != 3)
+                while (choice != 4)
                 {
                     if (choice == 1)
                     {
-                        displaySortingUser();
-                        cin >> choice;
+                        int selection;
+                        init.displaySelection();
+                        cin >> selection;
                         cout << endl;
+                        if (selection == 1)
+                        {
+                            init.displaySortingUser();
+                            cin >> choice;
+                            cout << endl;
+
+                            for (const auto &user : users)
+                            {
+                                user.display();
+                                cout << "--------------------" << endl;
+                            }
+                        }
+                        else if (selection == 2)
+                        {
+                            init.displaySeachingUser();
+                            cin >> choice;
+                            cout << endl;
+                        }
                     }
                     else if (choice == 2)
                     {
-                        displaySeachingUser();
-                        cin >> choice;
+                        int selection;
+                        init.displaySelection();
+                        cin >> selection;
                         cout << endl;
+                        if (selection == 1)
+                        {
+                            init.displaySortingAirline();
+                            cin >> choice;
+                            cout << endl;
+
+                            for (const auto &airline : airlines)
+                            {
+                                airline.display();
+                                cout << "--------------------" << endl;
+                            }
+                        }
+                        else if (selection == 2)
+                        {
+                            init.displaySeachingAirline();
+                            cin >> choice;
+                            cout << endl;
+                        }
+                    }
+                    else if (choice == 3)
+                    {
+                        int selection;
+                        init.displaySelection();
+                        cin >> selection;
+                        cout << endl;
+
+                        if (selection == 1)
+                        {
+                            init.displaySortingReservation();
+                            cin >> choice;
+                            cout << endl;
+
+                            for (const auto &reservation : reservations)
+                            {
+                                reservation.display();
+                                cout << "--------------------" << endl;
+                            }
+                        }
+                        else if (selection == 2)
+                        {
+                            init.displaySeachingReservation();
+                            cin >> choice;
+                            cout << endl;
+                        }
                     }
                     else
                         cout << "Invalid Choice" << endl;
@@ -166,7 +407,7 @@ int main()
             case 2:
             {
                 int choice;
-                displaySelection();
+                init.displaySelection();
                 cin >> choice;
                 cout << endl;
 
@@ -174,13 +415,13 @@ int main()
                 {
                     if (choice == 1)
                     {
-                        displaySortingAirline();
+                        init.displaySortingAirline();
                         cin >> choice;
                         cout << endl;
                     }
                     else if (choice == 2)
                     {
-                        displaySeachingAirline();
+                        init.displaySeachingAirline();
                         cin >> choice;
                         cout << endl;
                     }
@@ -193,8 +434,8 @@ int main()
 
             case 3:
             {
-                int choice;
-                displaySelection();
+                int choice = 0;
+                init.displaySelection();
                 cin >> choice;
                 cout << endl;
 
@@ -202,13 +443,13 @@ int main()
                 {
                     if (choice == 1)
                     {
-                        displaySortingReservation();
+                        init.displaySortingReservation();
                         cin >> choice;
                         cout << endl;
                     }
                     else if (choice == 2)
                     {
-                        displaySeachingReservation();
+                        init.displaySeachingReservation();
                         cin >> choice;
                         cout << endl;
                     }

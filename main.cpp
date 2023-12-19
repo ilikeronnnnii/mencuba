@@ -55,7 +55,7 @@ public:
         cout << "Name: " << Name << endl;
         cout << "Identification Number: " << IC << endl;
         cout << "Phone Number: " << Phone << endl;
-        cout << " Email: " << Email << endl;
+        cout << "Email: " << Email << endl;
     }
 };
 
@@ -212,6 +212,7 @@ public:
     {
         return Class;
     }
+
     void display(int x, vector<Reservation> &reservations) const
     {
         quickSortReservation(reservations, 0, reservations.size() - 1, x);
@@ -221,6 +222,11 @@ public:
         cout << "Reservation Date: " << Date << endl;
         cout << "Arrival Destination: " << Location << endl;
         cout << "Class: " << Class << endl;
+    }
+
+    void displayLocation() const
+    {
+        cout << Location << " ";
     }
 };
 
@@ -384,9 +390,12 @@ public:
         cout << "Option: ";
     }
 
-    void readFromFile()
+    void makeReservation()
     {
-        // read files
+        system("cls");
+        cout << "Welcome to Capybara International Airport (CiA)" << endl;
+        cout << "Where to travel?:  " << endl
+             << endl;
     }
 };
 
@@ -431,9 +440,9 @@ void LoadFiles(vector<User> &users, vector<Airline> &airline, vector<Reservation
     ifstream reservationFile("data/reservation.csv");
     string lineReservation;
 
-    getline(airlineFile, lineReservation); // skip the headings
+    getline(reservationFile, lineReservation); // skip the headings
 
-    while (getline(airlineFile, lineReservation))
+    while (getline(reservationFile, lineReservation))
     {
         string reservationId, departureTime, arrivalTime, date, location, Class;
         stringstream ss(lineReservation); // get the whole line
@@ -475,7 +484,20 @@ int main()
         {
         case 0:
         {
-            cout << "hello";
+            init.makeReservation();
+            int i = 1;
+            for (const auto &reservation : reservations)
+            {
+                cout << "[" << i << "] ";
+                reservation.displayLocation();
+
+                cout << endl
+                     << "--------------------------" << endl;
+                i++;
+            }
+
+            cout << "Select: ";
+            cin >> option;
         }
         break;
         case 1:
@@ -493,45 +515,82 @@ int main()
             {
             case 1:
             {
-                while (choice != 3)
+                while (choice != 4)
                 {
                     if (choice == 1)
                     {
-                        init.displaySortingUser();
-                        cin >> choice;
-
+                        int selection;
+                        init.displaySelection();
+                        cin >> selection;
                         cout << endl;
-
-                        for (const auto &user : users)
+                        if (selection == 1)
                         {
-                            user.display(choice, users);
-                            cout << "--------------------" << endl;
+                            init.displaySortingUser();
+                            cin >> choice;
+                            cout << endl;
+
+                            for (const auto &user : users)
+                            {
+                                user.display(choice, users);
+                                cout << "----------------------" << endl;
+                            }
+                        }
+                        else if (selection == 2)
+                        {
+                            init.displaySeachingUser();
+                            cin >> choice;
+                            cout << endl;
                         }
                     }
                     else if (choice == 2)
                     {
-                        init.displaySortingAirline();
-                        cin >> choice;
-
+                        int selection;
+                        init.displaySelection();
+                        cin >> selection;
                         cout << endl;
-
-                        for (const auto &airline : airlines)
+                        if (selection == 1)
                         {
-                            airline.display(choice, airlines);
-                            cout << "--------------------" << endl;
+                            init.displaySortingAirline();
+                            cin >> choice;
+                            cout << endl;
+
+                            for (const auto &airline : airlines)
+                            {
+                                airline.display(choice, airlines);
+                                cout << "--------------------" << endl;
+                            }
+                        }
+                        else if (selection == 2)
+                        {
+                            init.displaySeachingAirline();
+                            cin >> choice;
+                            cout << endl;
                         }
                     }
                     else if (choice == 3)
                     {
-                        init.displaySortingReservation();
-                        cin >> choice;
-
+                        int selection;
+                        init.displaySelection();
+                        cin >> selection;
                         cout << endl;
 
-                        for (const auto &reservation : reservations)
+                        if (selection == 1)
                         {
-                            reservation.display(choice, reservations);
-                            cout << "--------------------" << endl;
+                            init.displaySortingReservation();
+                            cin >> choice;
+                            cout << endl;
+
+                            for (const auto &reservation : reservations)
+                            {
+                                reservation.display(choice, reservations);
+                                cout << "--------------------" << endl;
+                            }
+                        }
+                        else if (selection == 2)
+                        {
+                            init.displaySeachingReservation();
+                            cin >> choice;
+                            cout << endl;
                         }
                     }
                     else
@@ -572,7 +631,7 @@ int main()
 
             case 3:
             {
-                int choice;
+                int choice = 0;
                 init.displaySelection();
                 cin >> choice;
                 cout << endl;
