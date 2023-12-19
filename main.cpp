@@ -18,8 +18,15 @@ public:
     User(string Name, string IC, string Phone, string Email)
         : Name(Name), IC(IC), Phone(Phone), Email(Email) {}
 
-    void display() const
+    void display(int x) const
     {
+
+        if (x == 1)
+        {
+        }
+        else if (x == 2)
+        {
+                }
         cout << "Name: " << Name << endl;
         cout << "Identification Number: " << IC << endl;
         cout << "Phone Number: " << Phone << endl;
@@ -77,7 +84,7 @@ public:
     void
     displayMenu()
     {
-        system("cls"); // to clear the mess
+        // system("cls"); // to clear the mess
         cout << endl;
         cout << "                                   |" << endl;
         cout << "                                   |" << endl;
@@ -184,9 +191,9 @@ public:
     }
 };
 
-void LoadFiles(vector<User> users, vector<Airline> airline, vector<Reservation> reservation)
+void LoadFiles(vector<User> &users, vector<Airline> &airline, vector<Reservation> &reservation)
 {
-    ifstream userFile("/data/user.csv");
+    ifstream userFile("data/user.csv");
     string lineUser;
 
     getline(userFile, lineUser); // skip the headings
@@ -202,9 +209,10 @@ void LoadFiles(vector<User> users, vector<Airline> airline, vector<Reservation> 
 
         users.push_back(User(name, ic, phone, email));
     }
+
     userFile.close();
 
-    ifstream airlineFile("/data/airline.csv");
+    ifstream airlineFile("data/airline.csv");
     string lineAirline;
 
     getline(airlineFile, lineAirline); // skip the headings
@@ -219,9 +227,9 @@ void LoadFiles(vector<User> users, vector<Airline> airline, vector<Reservation> 
 
         airline.push_back(Airline(airplaneId, capacity, company));
     }
-    userFile.close();
+    airlineFile.close();
 
-    ifstream reservationFile("/data/reservation.csv");
+    ifstream reservationFile("data/reservation.csv");
     string lineReservation;
 
     getline(airlineFile, lineReservation); // skip the headings
@@ -239,7 +247,7 @@ void LoadFiles(vector<User> users, vector<Airline> airline, vector<Reservation> 
 
         reservation.push_back(Reservation(reservationId, departureTime, arrivalTime, date, location, Class));
     }
-    userFile.close();
+    reservationFile.close();
 };
 
 int main()
@@ -292,7 +300,14 @@ int main()
                     {
                         init.displaySortingUser();
                         cin >> choice;
+
                         cout << endl;
+
+                        for (const auto &user : users)
+                        {
+                            user.display();
+                            cout << "--------------------" << endl;
+                        }
                     }
                     else if (choice == 2)
                     {
