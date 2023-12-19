@@ -19,6 +19,8 @@ void quickSortAirline(vector<Airline> &airlines, int bottom, int top, int choice
 int partitionReservation(vector<Reservation> &reservations, int bottom, int top, int choice);
 void quickSortReservation(vector<Reservation> &reservations, int bottom, int top, int choice);
 
+int binarySearchByName(const vector<User> &users, const string &name);
+
 class User
 {
 private:
@@ -46,6 +48,14 @@ public:
     string getEmail() const
     {
         return Email;
+    }
+
+    void displayBodo() const
+    {
+        cout << "Name: " << Name << endl;
+        cout << "Identification Number: " << IC << endl;
+        cout << "Phone Number: " << Phone << endl;
+        cout << "Email: " << Email << endl;
     }
 
     void display(int x, vector<User> &users) const
@@ -458,6 +468,32 @@ void LoadFiles(vector<User> &users, vector<Airline> &airline, vector<Reservation
     reservationFile.close();
 };
 
+int binarySearchByName(const vector<User> &users, const string &name)
+{
+    int low = 0;
+    int high = users.size() - 1;
+
+    while (low <= high)
+    {
+        int mid = low + (high - low) / 2;
+
+        if (users[mid].getName() == name)
+        {
+            return mid; // User found at index mid
+        }
+        else if (users[mid].getName() < name)
+        {
+            low = mid + 1;
+        }
+        else
+        {
+            high = mid - 1;
+        }
+    }
+
+    return -1; // User not found
+}
+
 int main()
 {
 
@@ -540,6 +576,19 @@ int main()
                             init.displaySeachingUser();
                             cin >> choice;
                             cout << endl;
+
+                            cin.ignore();
+                            if (choice == 1)
+                            {
+                                string username;
+                                int found = 0;
+                                cout << "Insert the username: ";
+
+                                getline(cin, username);
+                                found = binarySearchByName(users, username);
+
+                                users[found].displayBodo();
+                            }
                         }
                     }
                     else if (choice == 2)
