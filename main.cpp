@@ -65,10 +65,10 @@ public:
     {
 
         quickSortUsers(users, 0, users.size() - 1, x);
-        cout << "Name: " << Name << endl;
-        cout << "Identification Number: " << IC << endl;
-        cout << "Phone Number: " << Phone << endl;
-        cout << "Email: " << Email << endl;
+        cout << setw(25) << "Name: " << Name << endl;
+        cout << setw(42) << "Identification Number: " << IC << endl;
+        cout << setw(33) << "Phone Number: " << Phone << endl;
+        cout << setw(26) << "Email: " << Email << endl;
     }
 };
 
@@ -143,9 +143,9 @@ public:
     void display(int x, vector<Airline> &airlines) const
     {
         quickSortAirline(airlines, 0, airlines.size() - 1, x);
-        cout << "AirplaneID: " << AirplaneID << endl;
-        cout << "Plane Max Capacity: " << Capacity << endl;
-        cout << "Plane Brand: " << Company << endl;
+        cout << setw(25) << "AirplaneID: " << AirplaneID << endl;
+        cout << setw(25) << "Plane Max Capacity: " << Capacity << endl;
+        cout << setw(25) << "Plane Brand: " << Company << endl;
     }
 };
 
@@ -229,12 +229,12 @@ public:
     void display(int x, vector<Reservation> &reservations) const
     {
         quickSortReservation(reservations, 0, reservations.size() - 1, x);
-        cout << "ReservationID: " << ReservationID << endl;
-        cout << "Estimated Departure Time: " << DepartureTime << endl;
-        cout << "Estimated Arrival Time: " << ArrivalTime << endl;
-        cout << "Reservation Date: " << Date << endl;
-        cout << "Arrival Destination: " << Location << endl;
-        cout << "Class: " << Class << endl;
+        cout << setw(25) << "ReservationID: " << ReservationID << endl;
+        cout << setw(25) << "Estimated Departure Time: " << DepartureTime << endl;
+        cout << setw(25) << "Estimated Arrival Time: " << ArrivalTime << endl;
+        cout << setw(25) << "Reservation Date: " << Date << endl;
+        cout << setw(25) << "Arrival Destination: " << Location << endl;
+        cout << setw(25) << "Class: " << Class << endl;
     }
 
     void displayLocation() const
@@ -939,7 +939,7 @@ int main()
                             {
                                 string IC;
                                 int found = 0;
-                                cout << "Insert the IC: ";
+                                cout << setw(42) << "Insert the IC: ";
 
                                 getline(cin, IC);
                                 cout << endl;
@@ -953,7 +953,7 @@ int main()
                             {
                                 string Phone;
                                 int found = 0;
-                                cout << "Insert the Phone: ";
+                                cout << setw(42) << "Insert the Phone: ";
 
                                 getline(cin, Phone);
                                 cout << endl;
@@ -967,7 +967,7 @@ int main()
                             {
                                 string Email;
                                 int found = 0;
-                                cout << "Insert the Email: ";
+                                cout << setw(42) << "Insert the Email: ";
 
                                 getline(cin, Email);
                                 cout << endl;
@@ -1006,7 +1006,7 @@ int main()
                             {
                                 string AirplaneID;
                                 int found = 0;
-                                cout << "Insert the AirplaneID: ";
+                                cout << setw(42) << "Insert the AirplaneID: ";
                                 cin.ignore();
                                 getline(cin, AirplaneID);
                                 cout << endl;
@@ -1020,7 +1020,7 @@ int main()
                             {
                                 string Capacity;
                                 int found = 0;
-                                cout << "Insert the Capacity: ";
+                                cout << setw(42) << "Insert the Capacity: ";
                                 cin.ignore();
                                 getline(cin, Capacity);
                                 cout << endl;
@@ -1034,7 +1034,7 @@ int main()
                             {
                                 string Company;
                                 int found = 0;
-                                cout << "Insert the Company: ";
+                                cout << setw(42) << "Insert the Company: ";
                                 cin.ignore();
                                 getline(cin, Company);
                                 cout << endl;
@@ -1074,7 +1074,7 @@ int main()
                             {
                                 string ReservationID;
                                 int found = 0;
-                                cout << "Insert the ReservationID: ";
+                                cout << setw(42) << "Insert the ReservationID: ";
                                 cin.ignore();
                                 getline(cin, ReservationID);
                                 cout << endl;
@@ -1088,7 +1088,7 @@ int main()
                             {
                                 string DepartureTime;
                                 int found = 0;
-                                cout << "Insert the DepartureTime: ";
+                                cout << setw(42) << "Insert the DepartureTime: ";
                                 cin.ignore();
                                 getline(cin, DepartureTime);
                                 cout << endl;
@@ -1102,7 +1102,7 @@ int main()
                             {
                                 string ArrivalTime;
                                 int found = 0;
-                                cout << "Insert the ArrivalTime: ";
+                                cout << setw(42) << "Insert the ArrivalTime: ";
                                 cin.ignore();
                                 getline(cin, ArrivalTime);
                                 cout << endl;
@@ -1116,7 +1116,7 @@ int main()
                             {
                                 string Date;
                                 int found = 0;
-                                cout << "Insert the Date: ";
+                                cout << setw(42) << "Insert the Date: ";
                                 cin.ignore();
                                 getline(cin, Date);
                                 cout << endl;
@@ -1130,7 +1130,7 @@ int main()
                             {
                                 string Location;
                                 int found = 0;
-                                cout << "Insert the Location: ";
+                                cout << setw(42) << "Insert the Location: ";
                                 cin.ignore();
                                 getline(cin, Location);
                                 cout << endl;
