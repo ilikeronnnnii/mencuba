@@ -3,6 +3,7 @@
 #include <vector>
 #include <fstream>
 #include <sstream>
+#include <iomanip>
 
 using namespace std;
 
@@ -54,7 +55,7 @@ public:
 
     void displayBodo() const
     {
-        cout << "Name: " << Name << endl;
+        cout << setw(75) << "Name: " << Name << endl;
         cout << "Identification Number: " << IC << endl;
         cout << "Phone Number: " << Phone << endl;
         cout << "Email: " << Email << endl;
