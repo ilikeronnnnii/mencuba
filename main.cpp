@@ -984,7 +984,7 @@ int main()
                             cin >> choice;
                             cout << endl;
 
-                            quickSortReservation(reservations, 0, reservations.size() - 1, choice);
+                            quickSortReservation(reservatsdsdwasdawdions, 0, reservations.size() - 1, choice);
 
                             for (int j = 0; j < reservations.size(); j++)
                             {
