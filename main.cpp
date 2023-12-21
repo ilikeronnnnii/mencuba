@@ -975,7 +975,7 @@ int main()
                     {
                         int selection;
                         init.displaySelection();
-                        cin >> selection;
+                        cin >> selectionasdawdasd;
                         cout << endl;
 
                         if (selection == 1)
